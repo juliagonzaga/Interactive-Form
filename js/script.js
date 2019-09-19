@@ -14,7 +14,6 @@ $('#design').on('change', function(){
     const $heartJs = $('#color option:gt(2)');
     $($allTheme).removeAttr('selected');
         if ($selectTheme === 'js puns'){
-            $('#color option:eq(0)').attr('selected', true);
             $($jsPuns).show();
             $($heartJs).hide();
         } else if ($selectTheme === 'heart js'){
@@ -22,7 +21,9 @@ $('#design').on('change', function(){
             $($heartJs).show();
             $($jsPuns).hide();
         } else {
-            $('#color option:eq(0)').attr('selected', true);
             $($allTheme).show();
         };
+});
+$('.activities').on('click', function(){
+    
 });
