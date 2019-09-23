@@ -24,6 +24,34 @@ $('#design').on('change', function(){
             $($allTheme).show();
         };
 });
-$('.activities').on('click', function(){
-    
+
+$('input[type=checkbox]').on('change', function(){
+    $(this).attr('checked', true);
+    if ($(this).prop('checked') == false){
+        $(this).removeAttr('checked');
+    }
+    console.log($(this))
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
