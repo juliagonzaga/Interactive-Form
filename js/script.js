@@ -26,11 +26,34 @@ $('#design').on('change', function(){
 });
 
 $('input[type=checkbox]').on('change', function(){
-    $(this).attr('checked', true);
-    if ($(this).prop('checked') == false){
-        $(this).removeAttr('checked');
+    const $framework = $('.activities label:eq(1) input');
+    const $libs = $('.activities label:eq(2) input');
+    const $express = $('.activities label:eq(3) input');
+    const $node = $('.activities label:eq(4) input');
+
+    if ($(this).attr('name') === 'js-frameworks' && $(this).is(':checked')){
+        $express.prop('disabled', true).parent().css('color', 'gray');
+    } else if ($(this).attr('name') === 'js-frameworks' && $(this).not(':checked')) {
+        $express.prop('disabled', false).parent().css('color', 'black');
     }
-    console.log($(this))
+
+    if ($(this).attr('name') === 'express' && $(this).is(':checked')){
+        $framework.prop('disabled', true).parent().css('color', 'gray');
+    } else if ($(this).attr('name') === 'express' && $(this).not(':checked')) {
+        $framework.prop('disabled', false).parent().css('color', 'black');
+    }
+
+    if ($(this).attr('name') === 'js-libs' && $(this).is(':checked')){
+        $node.prop('disabled', true).parent().css('color', 'gray');
+    } else if ($(this).attr('name') === 'js-libs' && $(this).not(':checked')) {
+        $node.prop('disabled', false).parent().css('color', 'black');
+    }
+
+    if ($(this).attr('name') === 'node' && $(this).is(':checked')){
+        $libs.prop('disabled', true).parent().css('color', 'gray');
+    } else if ($(this).attr('name') === 'node' && $(this).not(':checked')) {
+        $libs.prop('disabled', false).parent().css('color', 'black');
+    }
 });
 
 
