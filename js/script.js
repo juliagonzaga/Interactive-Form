@@ -26,35 +26,50 @@ $('#design').on('change', function(){
 });
 
 $('input[type=checkbox]').on('change', function(){
+    const $checked = $(this).is(':checked');
+    const $notChecked = $(this).not(':checked');
+    const $attr = $(this).attr('name');
     const $framework = $('.activities label:eq(1) input');
     const $libs = $('.activities label:eq(2) input');
     const $express = $('.activities label:eq(3) input');
     const $node = $('.activities label:eq(4) input');
-
-    if ($(this).attr('name') === 'js-frameworks' && $(this).is(':checked')){
+    
+    if ($attr === 'js-frameworks' && $checked){
         $express.prop('disabled', true).parent().css('color', 'gray');
-    } else if ($(this).attr('name') === 'js-frameworks' && $(this).not(':checked')) {
+    } else if ($attr === 'js-frameworks' && $notChecked) {
         $express.prop('disabled', false).parent().css('color', 'black');
     }
 
-    if ($(this).attr('name') === 'express' && $(this).is(':checked')){
+    if ($attr === 'express' && $checked){
         $framework.prop('disabled', true).parent().css('color', 'gray');
-    } else if ($(this).attr('name') === 'express' && $(this).not(':checked')) {
+    } else if ($attr === 'express' && $notChecked) {
         $framework.prop('disabled', false).parent().css('color', 'black');
     }
 
-    if ($(this).attr('name') === 'js-libs' && $(this).is(':checked')){
+    if ($attr === 'js-libs' && $checked){
         $node.prop('disabled', true).parent().css('color', 'gray');
-    } else if ($(this).attr('name') === 'js-libs' && $(this).not(':checked')) {
+    } else if ($attr === 'js-libs' && $notChecked) {
         $node.prop('disabled', false).parent().css('color', 'black');
     }
 
-    if ($(this).attr('name') === 'node' && $(this).is(':checked')){
+    if ($attr === 'node' && $checked){
         $libs.prop('disabled', true).parent().css('color', 'gray');
-    } else if ($(this).attr('name') === 'node' && $(this).not(':checked')) {
+    } else if ($attr === 'node' && $notChecked) {
         $libs.prop('disabled', false).parent().css('color', 'black');
     }
+
+    var $total = 0;
+    $(this).each(function(){
+        var $price = parseInt($(this).parent().text().match(/\d+$/)); 
+        if ($checked){
+            $total += $total + $price;
+            console.log($total)
+        }
+    });
+   
 });
+
+
 
 
 
