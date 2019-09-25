@@ -25,6 +25,9 @@ $('#design').on('change', function(){
         };
 });
 
+
+var $total = 0;
+$('.activities').append($(`<label></label><br>`));
 $('input[type=checkbox]').on('change', function(){
     const $checked = $(this).is(':checked');
     const $notChecked = $(this).not(':checked');
@@ -58,22 +61,16 @@ $('input[type=checkbox]').on('change', function(){
         $libs.prop('disabled', false).parent().css('color', 'black');
     }
 
-    var $total = 0;
-    $(this).each(function(){
-        var $price = parseInt($(this).parent().text().match(/\d+$/)); 
-        if ($checked){
-            $total += $total + $price;
-            console.log($total)
-        }
-    });
-   
+    if($checked){
+        let $price = parseInt($(this).parent().text().match(/\d+$/));
+        $total += $price;
+        console.log($total)
+    } else {
+        let $price = parseInt($(this).parent().text().match(/\d+$/));
+        $total -= $price;
+        console.log($total)
+    }
 });
-
-
-
-
-
-
 
 
 
